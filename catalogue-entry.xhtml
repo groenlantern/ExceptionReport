@@ -1,0 +1,32 @@
+<!--
+                                <p:column>
+                                    <p:outputLabel for="catalogue" value="3. Select Product Catalogue : " />
+                                </p:column>
+                                <p:column>
+                                    <p:selectOneMenu id="catalogue" 
+                                                     value="#{productOnboardingController.selectedCatalogue}"
+                                                     required="true" 
+                                                     requiredMessage="A Catelogue is required"
+                                                     disabled="#{empty productOnboardingController.selectedContentPartner}"
+                                                     >
+                                        <f:selectItem itemLabel="[Select one]"
+                                                      noSelectionOption="true"
+                                                      itemDisabled="true" />
+                                        <f:selectItems value="#{catalogueController.itemsAvailableSelectOne}"
+                                                       var="catalogueItem"
+                                                       itemValue="#{catalogueItem}"
+                                                       itemLabel="#{catalogueItem.name}"/>
+                                        <p:ajax update="@this, infoPanel"/>
+                                    </p:selectOneMenu>
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton id="createCatalogueButton" 
+                                                     icon="ui-icon-plus"   
+                                                     value="#{bundle.Create}"
+                                                     actionListener="#{productOnboardingController.prepareCatalogueCreate}" 
+                                                     update="CatalogueCreateForm" 
+                                                     oncomplete="PF('CatalogueCreateDialog').show()"
+                                                     immediate="true"
+                                                     disabled="#{empty productOnboardingController.selectedContentPartner}"
+                                                     />        
+                                </p:column>   -->   

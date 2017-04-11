@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://128.199.168.147:8085/SAPISOAP/SAPI?wsdl" uri="src/conf/xml-resources/web-service-references/SAPI/wsdl/128.199.168.147_8085/SAPISOAP/SAPI.wsdl"/>
+    <system systemId="http://128.199.168.147:8085/SAPISOAP/SAPI?xsd=1" uri="src/conf/xml-resources/web-service-references/SAPI/wsdl/128.199.168.147_8085/SAPISOAP/SAPI.xsd_1.xsd"/>
+    <system systemId="http://dev2:8082/SAPISOAP/SAPI?wsdl" uri="src/conf/xml-resources/web-service-references/SAPI/wsdl/dev2_8082/SAPISOAP/SAPI.wsdl"/>
+    <system systemId="http://dev2:8082/SAPISOAP/SAPI?xsd=1" uri="src/conf/xml-resources/web-service-references/SAPI/wsdl/dev2_8082/SAPISOAP/SAPI.xsd_1.xsd"/>
+    <system systemId="http://dev2:8080/SAPISOAP/SAPI?wsdl" uri="src/conf/xml-resources/web-service-references/SAPI/wsdl/dev2_8080/SAPISOAP/SAPI.wsdl"/>
+    <system systemId="http://dev2:8080/SAPISOAP/SAPI?xsd=1" uri="src/conf/xml-resources/web-service-references/SAPI/wsdl/dev2_8080/SAPISOAP/SAPI.xsd_1.xsd"/>
+    <system systemId="http://103.16.16.15:8080/SAPISOAP/SAPI?wsdl" uri="src/conf/xml-resources/web-service-references/SAPI_1/wsdl/103.16.16.15_8080/SAPISOAP/SAPI.wsdl"/>
+    <system systemId="http://103.16.16.15:8080/SAPISOAP/SAPI?xsd=1" uri="src/conf/xml-resources/web-service-references/SAPI_1/wsdl/103.16.16.15_8080/SAPISOAP/SAPI.xsd_1.xsd"/>
+    <system systemId="file:/F:/stellr/POSaleBatch/../SAPIDPA/SAPIDPA-ejb/src/java/schema/userinfo.xsd" uri="src/conf/xml-resources/jaxb/Userinfo/userinfo.xsd"/>
+    <system systemId="file:/C:/Users/Jacques%20DT/Documents/NetBeansProjects/StellrTestBench/../../../../../jacques/projectZIPS/020%20Kevin%20Zips%20Halo161/StellrTestBenchaddedfintab/StellrTestBench/src/conf/xml-resources/jaxb/card/financial.xsd" uri="src/conf/xml-resources/jaxb/card/financial.xsd"/>
+    <system systemId="file:/C:/Users/Jacques%20DT/Documents/Stellr161/StellrTestBench/../FlowcoreBHNDPA/src/conf/xml-resources/jaxb/custominfo/customerinfo.xsd" uri="src/conf/xml-resources/jaxb/custominfo/customerinfo.xsd"/>
+    <system systemId="file:/C:/Users/Jacques%20DT/Documents/Stellr161/StellrTestBench/src/java/schema/customerinfo.xsd" uri="src/conf/xml-resources/jaxb/custominfo/customerinfo.xsd"/>
+    <system systemId="https://localhost:8080/SAPISOAP/SAPI?wsdl" uri="src/conf/xml-resources/web-service-references/SAPI/wsdl/localhost_8080/SAPISOAP/SAPI.wsdl"/>
+    <system systemId="https://localhost:8080/SAPISOAP/SAPI?xsd=1" uri="src/conf/xml-resources/web-service-references/SAPI/wsdl/localhost_8080/SAPISOAP/SAPI.xsd_1.xsd"/>
+    <system systemId="https://localhost:8080/FlowcoreBHNDPA/Flowcore?wsdl" uri="src/conf/xml-resources/web-service-references/Flowcore/wsdl/localhost_8080/FlowcoreBHNDPA/Flowcore.wsdl"/>
+    <system systemId="https://localhost:8080/FlowcoreBHNDPA/Flowcore?xsd=1" uri="src/conf/xml-resources/web-service-references/Flowcore/wsdl/localhost_8080/FlowcoreBHNDPA/Flowcore.xsd_1.xsd"/>
+    <system systemId="file:/home/andre/Projects/Workspace/Halo170/StellrTestBench/src/java/com/stellr/schema/routing.xsd" uri="src/conf/xml-resources/jaxb/routing/routing.xsd"/>
+    <system systemId="http://localhost:8080/FlowcoreBHNDPA/Flowcore?wsdl" uri="src/conf/xml-resources/web-service-references/Flowcore/wsdl/localhost_8080/FlowcoreBHNDPA/Flowcore.wsdl"/>
+    <system systemId="http://localhost:8080/FlowcoreBHNDPA/Flowcore?xsd=1" uri="src/conf/xml-resources/web-service-references/Flowcore/wsdl/localhost_8080/FlowcoreBHNDPA/Flowcore.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/SAPISOAP/SAPI?wsdl" uri="src/conf/xml-resources/web-service-references/SAPI/wsdl/localhost_8080/SAPISOAP/SAPI.wsdl"/>
+    <system systemId="http://localhost:8080/SAPISOAP/SAPI?xsd=1" uri="src/conf/xml-resources/web-service-references/SAPI/wsdl/localhost_8080/SAPISOAP/SAPI.xsd_1.xsd"/>
+</catalog>
