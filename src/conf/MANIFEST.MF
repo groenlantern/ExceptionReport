@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.9.4
+Created-By: 1.8.0_102-b14 (Oracle Corporation)
+Package-Title: Stellr/StellrExceptionReporting
+Specification-Title: [NONE]
+Specification-Version: 0.0
+Specification-Vendor: Stellr
+Implementation-Title: StellrExceptionReporting
+Implementation-Version: 1.6.3.817
+Implementation-Vendor: Stellr
+Revision: ${svna.version}
+Built-By: Jeanpe
+Built-Date: 2017-03-08 13:53:44 CAT
+

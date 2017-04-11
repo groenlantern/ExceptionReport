@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<schemas xmlns='http://xml.netbeans.org/schema/JAXBWizConfig' destdir='build/generated-sources/jaxb' projectName='POSaleBatch' version='1.0'>
+	<schema type='-xmlschema' package='userinfo' name='Userinfo'>
+		<xjc-options>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='src/conf/xml-resources/jaxb/Userinfo/userinfo.xsd' origLocation='../SAPIDPA/SAPIDPA-ejb/src/java/schema/userinfo.xsd'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
+</schemas>
