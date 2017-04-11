@@ -1,0 +1,247 @@
+/**
+ * $LastChangedBy: Andre $
+ * $LastChangedDate: 2016-07-07 09:50:33 +0200 (Thu, 07 Jul 2016) $
+ * $LastChangedRevision: 994 $
+ */
+.ui-datatable-scrollable-header, .ui-datatable-scrollable-footer {
+    border: none;
+    background: rgba(0,0,0,0);
+}
+
+.ui-panelgrid td {
+    background-color: #f4f4f4 !important;
+    border-style: none !important
+}
+
+.ui-panelgrid {
+    background-color: #f4f4f4;
+    width: 100%;
+}
+
+.col1 {
+    width: 25%;
+}
+.col2 {
+    width: 25%;
+}
+.col3 {
+    width: 34%;
+}
+
+.col4 {
+    width: 25%;
+}
+.col5 {
+    width: 48%;
+}
+.col6 {
+    width: 10%;
+}
+
+.ui-layout-unit-header {
+    background-color: #e0f4e0;
+    text-align: left;
+    font-family:'Helvetica';
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size:20px;
+}
+
+#page_header {
+    background-color: #f4f4f4;
+    text-align: center;
+    font-family:'Helvetica';
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size:30px;
+}
+
+.north-header {
+    background-color: #f4f4f4;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Helvetica';
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size:30px;
+}
+
+.center-header {
+    background-color: #f4f4f4;
+    text-align: left;
+    font-family:'Helvetica';
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size:20px;
+}
+
+.ui-button {
+    width: 250px;
+}
+
+.ui-button-text {
+    color: #207420;
+}
+
+.ui-layout-unit {
+    background-color: #f4f4f4;
+}
+
+.panelStyle tr, .panelStyle td{
+    border: none;
+    background-color: rgba(250,250,250,0);
+    margin-right: 180px;
+}
+
+#transId {
+    color: #fff;
+    font-style: normal;
+    text-decoration: none;
+}
+
+#logoImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 80px;
+    padding-top: 40px;
+    text-align: center;
+}
+
+#logoImg:hover {
+      -webkit-transition: all 0.3s ease;
+      transition: all .3s ease;
+      -webkit-filter: blur(1px);   
+}
+
+#footer {
+   position:relative;
+   left:0px;
+   bottom:0px;
+   width:100%;
+   background:#999;
+}
+
+#colorDiv {
+    text-align: center;
+    background-color: rgba(0, 0,0,0.6);
+    height: 100%;
+    position: fixed;
+    width: 110%;
+    padding-top: 1%;
+    margin-top: 0.5%;
+    margin-left: -5%;
+    -webkit-box-shadow: 0 0 35px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0 0 35px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.7);
+}
+
+#logoTagLine {
+    font-family: Helvetica;
+    font-size: 1em;
+    font-style: italic;
+    color: #eaeaea;
+    text-align: center;
+    width:50em;
+    margin-left: auto ;
+    margin-right: auto;
+}
+
+#centerImg {
+    margin-top: 10px;
+}
+
+#moveSqr
+{
+    width:550px;
+    height:476px;
+    opacity: 0.5;
+    margin-left: -1%;
+    position:fixed;
+    animation:mymove 1s infinite;
+    animation-timing-function:linear;
+    -webkit-animation-delay: 12s;
+    -webkit-animation:mymove 10s infinite;
+    -webkit-animation-timing-function:linear;
+    z-index: -1;
+}
+
+
+#backgroundHeader{
+    height: 51px;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    background-color: rgba(250,250,250,1);
+}
+
+
+@-webkit-keyframes mymove
+{
+    0% { background:white; top:900px; left:34%; }
+    100% { background:#408bbf; top: -500px; left:34%; }
+}
+
+
+#exportStyle {
+    font-size: 18px;
+    font-family: Helvetica;
+    vertical-align: central; 
+    text-align: center;
+}
+
+
+a:-webkit-any-link {
+    color: #000;
+}
+
+
+a {
+     text-decoration:none;
+     z-index: 2;
+}
+
+#sidemenu {
+    margin-right: 20%;
+    padding-right: 100px;
+}
+
+#tdbtn1:hover {
+    color: #408bbf;
+}
+
+
+#tdbtn2:hover {
+    color: #408bbf;
+}
+
+#tdbtn3:hover {
+    color: #408bbf;
+}
+
+
+#form1 {
+    background-color: rgba(0,0,0,0);
+}
+
+.formStyle  {
+    background-color: rgba(0,0,0,0);
+}
+
+#pGrid {
+    background-color: rgba(0,0,111,1);
+}
+
+.approved{
+    background-color: #9dc939; 
+    font-family: 'Arial';
+    
+}
+
+.declined{
+    background-color: #ff8f8f; 
+    color: #fff;
+    
+}
+
+ 
