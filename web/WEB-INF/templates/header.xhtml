@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+$LastChangedBy: Stuart $
+$LastChangedDate: 2016-10-31 14:39:06 +0200 (Mon, 31 Oct 2016) $
+$LastChangedRevision: 1617 $
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <body>
+        <ui:composition>
+            <!-- NAVIGATION -->
+            <div class="top-bar" role="navigation">
+                <div class="top-bar-left logo" style="cursor:pointer;" onclick="location.href = '/StellrExceptionReporting/';">
+                </div>
+                
+                <div id="responsive-menu">
+                    <div class="top-bar-title">
+                        <h1 style="color:#aaff00;" ><b>HALO Exception Reporting</b></h1>
+                    </div>
+                    
+                    <div class="top-bar-right">
+                        <ul class="dropdown menu" data-dropdown-menu="data-dropdown-menu"> 
+                            <li>
+                                <a href="${request.contextPath}/index.xhtml">Home</a>
+                            </li>
+                            <li>
+                                <a href="${request.contextPath}/exceptionReport.xhtml">Exception Report</a>
+                            </li>
+                            
+                            <li>
+                                <h:form>
+                                    <h:commandButton class="button logout" action="#{authController.logout()}" value="Logout" />
+                                </h:form>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </ui:composition>
+    </body>
+</html>

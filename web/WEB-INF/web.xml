@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+$LastChangedBy: Stuart $
+$LastChangedDate: 2016-10-31 14:39:06 +0200 (Mon, 31 Oct 2016) $
+$LastChangedRevision: 1617 $
+-->
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
+    
+    <security-constraint>
+        <display-name>Admin</display-name>
+        <web-resource-collection>
+            <web-resource-name>Admin</web-resource-name>
+            <description>Admin</description>
+            <url-pattern>/index.xhtml</url-pattern>
+            <url-pattern>/main.xhtml</url-pattern>
+            <url-pattern>/template.xhtml</url-pattern>
+            <url-pattern>/resources/*</url-pattern>
+            <url-pattern>/javax.faces.resource/*</url-pattern>
+            <url-pattern>/crudsJSF/address/List.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/catalogue/catalogue_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/commissionstructure/commissionstructure_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentaggregator/contentaggregator_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentaggregatoraddress/contentaggregatoraddress_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentdistributionlink/contentdistributionlink_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentpartner/contentpartner_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentpartneraddress/contentpartneraddress_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/currency/currency_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartner/distributionpartner_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraddress/distributionpartneraddress_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraggregator/distributionpartneraggregator_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraggregatoraddress/distributionpartneraggregatoraddress_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/merchantcategory/merchantcategory_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/product/product_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/productcataloguelink/productcataloguelink_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/store/store_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/storetype/storetype_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/address/address_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/catalogue/catalogue_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/commissionstructure/commissionstructure_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentaggregator/contentaggregator_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentaggregatoraddress/contentaggregatoraddress_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentdistributionlink/contentdistributionlink_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentpartner/contentpartner_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentpartneraddress/contentpartneraddress_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/currency/currency_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartner/distributionpartner_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraddress/distributionpartneraddress_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraggregator/distributionpartneraggregator_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraggregatoraddress/distributionpartneraggregatoraddress_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/merchantcategory/merchantcategory_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/product/product_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/productcataloguelink/productcataloguelink_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/store/store_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/storetype/storetype_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/address/address_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/catalogue/catalogue_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/commissionstructure/commissionstructure_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentaggregator/contentaggregator_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentaggregatoraddress/contentaggregatoraddress_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentdistributionlink/contentdistributionlink_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentpartner/contentpartner_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentpartneraddress/contentpartneraddress_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/currency/currency_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartner/distributionpartner_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraddress/distributionpartneraddress_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraggregator/distributionpartneraggregator_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraggregatoraddress/distributionpartneraggregatoraddress_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/merchantcategory/merchantcategory_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/product/product_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/productcataloguelink/productcataloguelink_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/store/store_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/storetype/storetype_index.xhtml</url-pattern>
+         
+            <url-pattern>/crudsJSF/payment/payment_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/campaign/campaign_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/campaignassignment/campaignassignment_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/translationfield/translationfield_index.xhtml</url-pattern>
+         
+            <url-pattern>/crudsJSF/payment/payment_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/campaign/campaign_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/campaignassignment/campaignassignment_create.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/translationfield/translationfield_create.xhtml</url-pattern>
+         
+            <url-pattern>/crudsJSF/payment/payment_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/campaign/campaign_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/campaignassignment/campaignassignment_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/translationfield/translationfield_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/onboardingwizard/*</url-pattern>
+            <url-pattern>/routing/config/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>StellrAdminGroup</role-name>
+        </auth-constraint>
+    </security-constraint>
+     
+    <security-constraint>
+        <display-name>Support</display-name>
+        <web-resource-collection>
+            <web-resource-name>Support</web-resource-name>
+            <description>Support</description>
+            <url-pattern>/index.xhtml</url-pattern>
+            <url-pattern>/resources/*</url-pattern>
+            <url-pattern>/javax.faces.resource/*</url-pattern>
+            <url-pattern>/crudsJSF/address/address_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/campaign/campaign_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/campaignassignment/campaignassignment_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/campaign/campaign_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/campaignassignment/campaignassignment_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/catalogue/catalogue_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/commissionstructure/commissionstructure_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentaggregator/contentaggregator_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentaggregatoraddress/contentaggregatoraddress_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentdistributionlink/contentdistributionlink_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentpartner/contentpartner_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentpartneraddress/contentpartneraddress_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/currency/currency_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartner/distributionpartner_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraddress/distributionpartneraddress_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraggregator/distributionpartneraggregator_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraggregatoraddress/distributionpartneraggregatoraddress_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/merchantcategory/merchantcategory_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/payment/payment_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/payment/payment_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/product/product_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/productcataloguelink/productcataloguelink_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/store/store_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/storetype/storetype_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/address/address_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/catalogue/catalogue_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/commissionstructure/commissionstructure_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentaggregator/contentaggregator_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentaggregatoraddress/contentaggregatoraddress_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentdistributionlink/contentdistributionlink_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentpartner/contentpartner_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentpartneraddress/contentpartneraddress_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/currency/currency_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartner/distributionpartner_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraddress/distributionpartneraddress_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraggregator/distributionpartneraggregator_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraggregatoraddress/distributionpartneraggregatoraddress_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/merchantcategory/merchantcategory_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/product/product_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/productcataloguelink/productcataloguelink_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/store/store_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/storetype/storetype_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/translationfield/translationfield_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/translationfield/translationfield_update.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/onboardingwizard/*</url-pattern>
+            <url-pattern>/routing/config/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>StellrSupportGroup</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <display-name>User</display-name>
+        <web-resource-collection>
+            <web-resource-name>User</web-resource-name>
+            <description>User</description>
+            <url-pattern>/index.xhtml</url-pattern>
+            <url-pattern>/resources/*</url-pattern>
+            <url-pattern>/javax.faces.resource/*</url-pattern>
+            <url-pattern>/crudsJSF/address/address_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/catalogue/catalogue_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/commissionstructure/commissionstructure_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentaggregator/contentaggregator_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentaggregatoraddress/contentaggregatoraddress_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentdistributionlink/contentdistributionlink_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentpartner/contentpartner_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/contentpartneraddress/contentpartneraddress_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/currency/currency_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartner/distributionpartner_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraddress/distributionpartneraddress_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraggregator/distributionpartneraggregator_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/distributionpartneraggregatoraddress/distributionpartneraggregatoraddress_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/merchantcategory/merchantcategory_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/product/product_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/productcataloguelink/productcataloguelink_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/store/store_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/storetype/storetype_index.xhtml</url-pattern>
+            <url-pattern>/crudsJSF/onboardingwizard/*</url-pattern>
+            <url-pattern>/routing/config/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>StellrUserGroup</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>PublicArea</web-resource-name>
+            <url-pattern>/resources/*</url-pattern>
+            <url-pattern>/javax.faces.resource/*</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+
+    
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>JDBCRealm</realm-name>
+        <form-login-config>
+            <form-login-page>/login.xhtml</form-login-page>
+            <form-error-page>/loginError.html</form-error-page>
+        </form-login-config>
+    </login-config>
+
+    <security-role>
+        <description>StellrUserGroup</description>
+        <role-name>StellrUserGroup</role-name>
+    </security-role>
+    
+    <security-role>
+        <description>StellrSupportGroup</description>
+        <role-name>StellrSupportGroup</role-name>
+    </security-role>
+    
+    <security-role>
+        <description>StellrAdminGroup</description>
+        <role-name>StellrAdminGroup</role-name>
+    </security-role>
+    
+    <context-param>
+        <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+</web-app>

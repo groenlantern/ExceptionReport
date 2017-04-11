@@ -1,0 +1,469 @@
+
+<!--
+$LastChangedBy: Stuart $
+$LastChangedDate: 2016-10-21 13:42:33 +0200 (Fri, 21 Oct 2016) $
+$LastChangedRevision: 1580 $
+--><ui:composition template="/WEB-INF/templates/layout.xhtml"
+                   xmlns="http://www.w3.org/1999/xhtml"
+                   xmlns:f="http://java.sun.com/jsf/core"
+                   xmlns:h="http://java.sun.com/jsf/html"
+                   xmlns:ui="http://java.sun.com/jsf/facelets"
+                   xmlns:p="http://primefaces.org/ui">
+  
+<ui:define name="content">
+    <div class="boxWrapper" >
+            
+        <h:form id="exceptionDateForm">
+            
+            <p:poll interval="2"   
+                    listener="#{ExceptionGridController.getItems}"    
+                    update="exceptionDatalist"/>            
+
+            <table class="blackBackGreenBorderLeft"  >
+                <thead class="blackBackGreenBorderLeft" >
+                     
+                    <!-- Date Inputs -->
+                    <tr class="blackBackGreenBorderLeft"    >
+                        <th class="blackBackNoBorderleft totalHeadingGreen " >                            
+                            <p:outputLabel value="#{bundle.DateFromLabel_validfrom}" for="fromDate" class="totalHeadingGreen totalHeadingGreenWidth " />                         
+                        </th>
+                        <th class="blackBackNoBorderLeft totalHeadingWhite " >                          
+                            
+                            <p:calendar widgetVar="fromDate" value="#{ExceptionGridController.fromDateObj}" id="fromDate" pattern="yyyy/MM/dd"  
+                                        title="#{bundle.DateFromLabel_validfrom}" 
+                                        showOn="focus" >
+                                <p:ajax event="dateSelect" process="@this"/>
+                            </p:calendar>
+                        </th>
+                        <th class="blackBackNoBorderleft totalHeadingGreen " >
+                            <p:outputLabel value="#{bundle.DateToLabel_validTo}" for="toDate" />
+                        </th>
+                        <th class="blackBackNoBorderLeft totalHeadingWhite " >
+                            <p:calendar widgetVar="toDate" value="#{ExceptionGridController.toDateObj}"  id="toDate" pattern="yyyy/MM/dd"  title="#{bundle.DateToLabel_validTo}" 
+                                        showOn="focus">
+                                  <p:ajax event="dateSelect" process="@this"/>
+                            </p:calendar>
+                        </th>
+                    </tr>
+
+                    <!-- Main Totals -->    
+                    <tr class="blackBackGreenBorderLeft" >
+                        <th class="blackBackNoBorderRight totalHeadingGreen totalHeadingGreenWidth " >
+                           <h3 class="totalHeadingGreen" >
+                                <b><h:outputText value="#{bundle.ViewTxnexceptionTotalExceptions}"/></b>
+                                <p:spacer width="20" height="10" />
+                           </h3>
+                        </th>
+                        <th class="blackBackNoBorderLeft totalHeadingWhite " >
+                            <div id="totalExcepXCount" >0</div>
+                        </th>
+                        <th class="blackBackNoBorderRight totalHeadingGreen totalHeadingGreenWidth "  >
+                            <h3 class="totalHeadingGreen" >
+                                <b><h:outputText value="#{bundle.ViewTxnexceptionTopSeverities}"/></b>
+                                <p:spacer width="20" height="10" />
+                            </h3>
+                        </th>
+                        <th class="blackBackNoBorderLeft totalHeadingWhite " >
+                            <div id="topSeverityX" >0</div>
+                        </th>
+                    </tr>
+                
+
+                </thead>
+                                                
+                <tbody class="blackBackGreenBorderLeft"  >
+                    <!-- Last 10 Exceptions - severity 1,2 red if less than 5 minutes old, else yellow, all other severity levels black -->
+                    <tr class="blackBackGreenBorderLeft" >
+                        <td class="blackBackNoBorderLeft totalHeadingWhite " colspan="4" >
+                      
+                            <p:dataTable id="exceptionDatalist"  value="#{ExceptionGridController.items}"  var="item" widgetVar="exceptionListItems"
+                                   paginator="false" rows="10" emptyMessage="No Exception Found" resizableColumns="false" liveResize="false"
+                                   rowStyleClass=" #{item.severity eq 1 ? 'exceptionColor1' : 'rowClass'} 
+                                                   #{item.severity eq 2 ? 'exceptionColor2' : 'rowClass'} "  >
+                                
+                                 <p:column  filterStyle="display:none;" styleClass="#{item.severity eq 1 ? 'columnClass exceptionColor1' : 'columnClass'}  
+                                                                                    #{item.severity eq 2 ? 'columnClass exceptionColor2' : 'columnClass'} " 
+                                            style=" width:150px; " >
+                                    <f:facet name="header" >
+                                        <h:outputText value="#{bundle.ViewTxnexceptionTitle_donewhen}"/>
+                                    </f:facet>
+                                     <h:outputText value="#{item.doneWhen}"/>
+                                 </p:column>
+                                
+                                 <p:column   filterStyle="display:none;" styleClass="#{item.severity eq 1 ? 'columnClass exceptionColor1' : 'columnClass'}    
+                                                                                     #{item.severity eq 2 ? 'columnClass exceptionColor2' : 'columnClass'} "  
+                                             style="    " >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ViewTxnexceptionTitle_description}"/>
+                                    </f:facet>
+                                     <h:outputText value="#{item.reportExceptionDescription}"/>
+                                </p:column>
+                                
+                                <p:column  filterStyle="display:none;" styleClass="#{item.severity eq 1 ? 'columnClass exceptionColor1' : 'columnClass'}    
+                                                                                   #{item.severity eq 2 ? 'columnClass exceptionColor2' : 'columnClass'} "   
+                                           style="  width:60px;  " >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ViewTxnexceptionTitle_severity}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.severity}"/>
+                                </p:column>
+
+                                <p:column   filterStyle="display:none;" styleClass="#{item.severity eq 1 ? 'columnClass exceptionColor1' : 'columnClass'}    
+                                                                                    #{item.severity eq 2 ? 'columnClass exceptionColor2' : 'columnClass'} "  
+                                            style=" width:180px; " >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ViewTxnexceptionTitle_merchantid}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.reportExceptionMerchant}"/>
+                                </p:column>
+                                
+                            </p:dataTable>
+                        </td>
+                    </tr>                    
+                    
+                    <!-- 3d Pie Charts -->
+                    <tr class="blackBackGreenBorderLeft" >
+                        <td class="blackBackNoBorderLeft" colspan="2" >
+                            <canvas id="categoryCVS" width="670" height="400" style="cursor:pointer;  " >[No canvas support]</canvas>
+                        </td>
+                        <td class="blackBackNoBorderLeft" colspan="2" >
+                            <canvas id="severityCVS" width="670" height="400" style="cursor:pointer;  " >[No canvas support]</canvas>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </h:form>
+            
+    </div>
+        
+    <script>
+        //Main Variables    
+        var category3Dchart = null;
+        var categoryCanvas = null;
+        
+        var severity3Dchart = null;
+        var severityCanvas = null;
+
+        var totalDiv = null;
+        var severityDiv = null;
+        
+        //Color Codes
+        var redColor = "#cc0000";
+        var orangeColor = "#ff3300";
+        var yellowColor = "yellow";
+        var greenColor = "#99ff00";
+        var blueColor = "#00ccff";
+        var purpleColor = "#bf00ff";
+        var maroonColor = "#800000";
+        var cyanColor = "#00ffff";
+        var pinkColor = "#ff33cc";
+        var navyColor = "#0000b3";
+        var lightGrey = "#9494b8";
+        var whiteColor = "#fff";
+        var blackColor = "#000";
+        var stellrGreen = "#a2c742";
+        var lumoGreen = "#aaff00";
+
+        //Set default date values to today
+        var FROMDATE_OBJNAME = "fromDate";
+        var TODATE_OBJNAME = "toDate";
+
+        //Wait for page to be fully loaded
+        window.onload = function ()
+        {                
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth();
+            var yyyy = today.getFullYear();
+
+            //PF(FROMDATE_OBJNAME).setDate(new Date(yyyy,mm,dd));
+              //                      PF(FROMDATE_OBJNAME).setDate(new Date(2014,mm,dd));  //Just for testing 
+            //PF(TODATE_OBJNAME).setDate(new Date(yyyy,mm,dd,23,59,59));
+
+            //Load Canvas links
+            totalDiv  = document.getElementById("totalExcepXCount");
+            severityDiv  = document.getElementById("topSeverityX");
+            categoryCanvas  = document.getElementById("categoryCVS");
+            severityCanvas  = document.getElementById("severityCVS");
+
+            //Start the Page data refresh cycle every 5 seconds 
+            setTotalExFunction();                                
+        };
+        
+        //----------------------End of Window Load ----------------------------------
+        //
+        //Functions
+        //Format date
+        function toJSONLocal (date) {
+            var local = new Date(date);
+            local.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+            return local.toJSON().slice(0, 10).replace('T',' ');
+        }
+    
+    
+        //Load paramDates for item lookup
+        
+        //Load totals and top severity - 5 second timer
+        function setTotalExFunction(){
+            var SERVLET_CALL  = 'ExceptionReportingGetTotal';
+                SERVLET_CALL += '?from_date=' + toJSONLocal ( PF(FROMDATE_OBJNAME).getDate() );
+                SERVLET_CALL += '&amp;to_date=' + toJSONLocal ( PF(TODATE_OBJNAME).getDate() );
+
+            RGraph.AJAX(SERVLET_CALL, setTotalExFunctionProcessor);           
+        }
+
+        //Use Servlet data to load main totals and pie charts
+        function setTotalExFunctionProcessor ()
+        {
+            if (this.readyState === 4 ) {
+              if ( this.status === 200) {   
+                    try { 
+                        //Build JSON Object
+                        var jsonCategoryObj = $.parseJSON(this.responseText);                             
+
+                        //Load Totals
+                        totalDiv.innerHTML = jsonCategoryObj.totalexc;
+                        severityDiv.innerHTML = jsonCategoryObj.topseverity;
+
+                        //Build 3d Pie charts
+                        categoryTotalsProcessor( jsonCategoryObj.totCategoriesArray );
+                        severityGraphProcessor( jsonCategoryObj.totSeverityArray );
+                    } catch (cxception) {                     
+                    }  
+                    
+                    setTimeout(setTotalExFunction, 2000);
+              }                       
+            }
+
+        }
+        
+        //var textGRID = "hello";
+        
+        //Use Servlet data to build 3d Category Graph
+        function categoryTotalsProcessor (jsonCategoryObj)
+        {
+            var cntString = "";
+            var nameString = "";
+
+            //$(document.getElementById(PF("exceptionListItems").id)).children().children().children().children()[1].innerHTML
+
+            //Loop Data and build count and name arrays
+            $.each(jsonCategoryObj, function(i, item) {
+                if ( cntString !== "") { 
+                    cntString = cntString + ",";
+                }
+                cntString = cntString + item.cnt;
+
+                if ( nameString !== "") { 
+                    nameString = nameString + ",";
+                }
+                nameString = nameString + item.name;                                                                
+                
+              //  $(document.getElementById(PF("exceptionListItems").id)).children().children().children().children()[3].innerHTML = textGRID;
+            });
+
+            try { 
+                categoryCanvas  = document.getElementById("categoryCVS");
+                RGraph.Clear(categoryCanvas);
+                RGraph.Reset(categoryCanvas);
+            } catch (e3) {                
+               console.log("exc3 " + e3);
+            } 
+                
+
+            category3Dchart = build3DPieFunc(cntString,nameString, categoryCanvas, category3Dchart, "Exceptions by Category", 330);                            
+        }            
+
+        //Use Servlet data to build 3d Category Graph
+        function severityGraphProcessor (jsonSeverityObj)
+        {                                                      
+            var cntString = "";
+            var nameString = "";
+
+            //Loop Data and build count and name arrays
+            $.each(jsonSeverityObj, function(i, item) {
+                if ( cntString !== "") { 
+                    cntString = cntString + ",";
+                }
+                cntString = cntString + item.cnt;
+
+                if ( nameString !== "") { 
+                    nameString = nameString + ",";
+                }
+                nameString = nameString + item.name;                                                                
+            });
+            
+            try { 
+                severityCanvas  = document.getElementById("severityCVS");
+                RGraph.Clear(severityCanvas);
+                RGraph.Reset(severityCanvas);
+            } catch (e2) {                
+                console.log("exc2 " + e2);
+            } 
+            
+            severity3Dchart = build3DPieFunc(cntString,nameString, severityCanvas, severity3Dchart, "Exceptions by Severity",330);                            
+
+        }
+
+        //Color Array
+        //This must match the order of the Gradient array
+        var colorArrayColors = new Array();
+        colorArrayColors[0] = greenColor;
+        colorArrayColors[1] = yellowColor;
+        colorArrayColors[2] = redColor;
+        colorArrayColors[3] = blueColor;
+        colorArrayColors[4] = orangeColor;
+        colorArrayColors[5] = purpleColor;
+        colorArrayColors[6] = cyanColor;
+        colorArrayColors[7] = maroonColor;
+        colorArrayColors[8] = navyColor;
+        colorArrayColors[9] = pinkColor;
+
+        //Build Color gradients for current Canvas, the gradients are built using the dimensions and properties of 
+        //the current canvas, thus need to be built for that canvas
+        function getCanvasGradients(canvasObj) { 
+            var context = canvasObj.getContext('2d');
+
+            //Gradient Colors
+            var redGradient = context.createLinearGradient(100,0,500,0);
+            redGradient.addColorStop(0, whiteColor);
+            redGradient.addColorStop(0.5, redColor);
+            redGradient.addColorStop(1, '#ff1a1a');
+
+            var orangeGradient = context.createLinearGradient(100,0,500,0);
+            orangeGradient.addColorStop(0, blackColor);
+            orangeGradient.addColorStop(0.35, orangeColor);
+            orangeGradient.addColorStop(1, '#ffff00');
+
+            var yellowGradient = context.createLinearGradient(100,0,500,0);
+            yellowGradient.addColorStop(0, '#fe6d02');
+            yellowGradient.addColorStop(0.7, yellowColor);
+            yellowGradient.addColorStop(0.95, yellowColor);
+            yellowGradient.addColorStop(1, '#fe6d02');
+
+            var greenGradient = context.createLinearGradient(100,0,500,0);
+            greenGradient.addColorStop(0, blackColor);
+            greenGradient.addColorStop(0.60, greenColor);
+            greenGradient.addColorStop(1, blackColor);
+
+            var blueGradient = context.createLinearGradient(100,0,500,0);
+            blueGradient.addColorStop(0, blackColor);
+            blueGradient.addColorStop(0.60, blueColor);
+            blueGradient.addColorStop(1, '#8080ff');
+
+            var purpleGradient = context.createLinearGradient(100,0,500,0);
+            purpleGradient.addColorStop(0, '#cc33ff');
+            purpleGradient.addColorStop(0.60, purpleColor);
+            purpleGradient.addColorStop(1, '#8600b3');
+
+            var maroonGradient = context.createLinearGradient(100,0,500,0);
+            maroonGradient.addColorStop(0, '#cc0000');
+            maroonGradient.addColorStop(0.60, maroonColor);
+            maroonGradient.addColorStop(1, whiteColor);
+
+            var cyanGradient = context.createLinearGradient(100,0,500,0);
+            cyanGradient.addColorStop(0, '#80ffff');
+            cyanGradient.addColorStop(0.60, cyanColor);
+            cyanGradient.addColorStop(1, '#003333');
+
+            var pinkGradient = context.createLinearGradient(100,0,500,0);
+            pinkGradient.addColorStop(0, '#cc0000');
+            pinkGradient.addColorStop(0.60, pinkColor);
+            pinkGradient.addColorStop(1, '#800000');
+
+            var navyGradient = context.createLinearGradient(100,0,500,0);
+            navyGradient.addColorStop(0, '#00ffff');
+            navyGradient.addColorStop(0.60, navyColor);
+            navyGradient.addColorStop(1, '#00ffff');
+
+            var colorArrayGradient = new Array();
+            colorArrayGradient[0] = greenGradient;
+            colorArrayGradient[1] = yellowGradient;
+            colorArrayGradient[2] = redGradient;
+            colorArrayGradient[3] = blueGradient;
+            colorArrayGradient[4] = orangeGradient;
+            colorArrayGradient[5] = purpleGradient;
+            colorArrayGradient[6] = cyanGradient;
+            colorArrayGradient[7] = maroonGradient;
+            colorArrayGradient[8] = navyGradient;
+            colorArrayGradient[9] = pinkGradient;
+
+            return colorArrayGradient;
+        }
+
+        //Create new 3D Pie chart based on parameters @ CANVAS
+        //Use getCanvasGradients
+        function build3DPieFunc(counts,names, thCanvas, chartObj, titleText, centerXvalue) { 
+            //Clear canvas before drawing a new Chart
+            //if ( chartObj !== null) { 
+            try { 
+                RGraph.Clear(thCanvas);
+                RGraph.Reset(thCanvas);
+            } catch (e1) {      
+                console.log("exc1 " + e1);
+            }          
+            //}
+
+            //Build Color Array for gradients
+            var colorArrayGradientObj = getCanvasGradients(thCanvas);
+
+            //Space between the segments 
+            var explodeValue = 10;
+
+            if ( counts.split(",").length > 5 ) { 
+                explodeValue = 20;
+            }
+             
+            //Build and Draw 3d Pie Chart                    
+            chartObj = new RGraph.Pie({
+                id: thCanvas.id,
+                data: counts.split(","),
+                options: {
+                    tooltips:  names.split(","),
+                    colors: colorArrayGradientObj,
+                    variant: 'pie3d',
+                    radius: 80,
+                    tooltipsEvent: 'onmousemove',
+                    labelsIngraph: true,
+                    labelsIngraphBounding: false ,
+                    labelsIngraphSize: 10,
+                    labelsIngraphFont: 'Arial Black',
+                    shadowBlur: 50,
+                    shadowColor: whiteColor,
+                    shadowOffsetx: 2,
+                    shadowOffsety: 5,
+                    exploded: explodeValue,
+                    textAccessible: false,
+                    variantThreedDepth: 70,
+                    title: titleText,                   
+                    titleFont:'Arial',
+                    titleSize:16,
+                    titleBold:true,
+                    titleColor: lumoGreen,
+                    titleY:380,
+                    clearto: blackColor,
+                    key: names.split(","),
+                    keyColorShape: 'circle',
+                    keyPositionGraphBoxed: true,
+                    keyColors: colorArrayColors,
+                    keyPositionY: 140,
+                    keyPositionX: 120, 
+                    keyTextSize:7,
+                    keyBackground: lightGrey,
+                    keyRounded: true,
+                    centerx: centerXvalue,
+                    gutterTop:0,
+                    gutterBottom:0
+                }
+            }).draw();
+
+            return chartObj;			
+        };
+
+    </script>
+        
+</ui:define>
+    
+     
+</ui:composition>
+

@@ -1,0 +1,294 @@
+
+<!--
+$LastChangedBy: Stuart $
+$LastChangedDate: 2016-10-21 13:42:33 +0200 (Fri, 21 Oct 2016) $
+$LastChangedRevision: 1580 $
+--><ui:composition template="/WEB-INF/templates/layout.xhtml"
+                   xmlns="http://www.w3.org/1999/xhtml"
+                   xmlns:f="http://java.sun.com/jsf/core"
+                   xmlns:h="http://java.sun.com/jsf/html"
+                   xmlns:ui="http://java.sun.com/jsf/facelets"
+                   xmlns:p="http://primefaces.org/ui">
+  
+<ui:define name="content">
+    <style>
+
+        .without-selectall .ui-selectcheckboxmenu-header .ui-chkbox {
+            display: none; 
+        }
+
+        .ui-selectcheckboxmenu-header {
+            display:none;
+        }
+     
+</style>
+    
+      <script>
+            function clearGrid() {
+                PF('exceptionListItems').clearFilters() ; 
+                PF('categorySelectVar').show();
+                PF('categorySelectVar').uncheckAll();
+                PF('SeveritiesSelectVar').show();
+                PF('SeveritiesSelectVar').uncheckAll();                            
+                PF('exceptionListItems').filter();
+                hideSelectsGrid() ;
+            }                         
+            
+            function hideSelectsGrid() {
+                PF('categorySelectVar').hide();
+                PF('SeveritiesSelectVar').hide();
+            }                         
+
+    </script>
+    
+    <div class="boxWrapper" >
+            
+        <h:form id="exceptionReportForm">
+            
+            <table class="blackBackGreenBorderLeft"  >
+                <thead class="blackBackGreenBorderLeft" >
+                    
+                    <!-- Date Inputs -->
+                    <tr class="blackBackGreenBorderLeft"    >
+                        <th class="blackBackNoBorderleft totalHeadingGreen " >                            
+                            <p:outputLabel value="#{bundle.DateFromLabel_validfrom}" for="fromDateObj" class="totalHeadingGreen totalHeadingGreenWidth " />                         
+                        </th>
+                        <th class="blackBackNoBorderLeft totalHeadingWhite " >                          
+                            
+                            <p:calendar widgetVar="fromDateObj" value="#{ExceptionReportController.fromDateObj}" id="fromDateObj" pattern="yyyy/MM/dd"  
+                                        title="#{bundle.DateFromLabel_validfrom}" showOn="focus" onchange=" clearGrid() "  >
+                                <p:ajax  immediate="false"    process="@this"   
+                                         oncomplete="  clearGrid() " 
+                                         event="dateSelect"  update="exceptionListItems,totalExceptionsOutput,topSeverityOutput" />
+                            </p:calendar>
+                            
+                        </th>
+                        <th class="blackBackNoBorderleft totalHeadingGreen " >
+                            <p:outputLabel value="#{bundle.DateToLabel_validTo}" for="toDateObj" />
+                        </th>
+                        
+                        <th class="blackBackNoBorderLeft totalHeadingWhite " >
+                            <table class="blackBackGreenBorderLeft"   > 
+                                <thead class="blackBackGreenBorderLeft" >
+                                    <tr class="blackBackGreenBorderLeft"     >
+                                        <th class="blackBackGreenBorderLeft"     >
+                                            
+                                            <p:calendar widgetVar="toDateObj" value="#{ExceptionReportController.toDateObj}"  id="toDateObj" 
+                                                        pattern="yyyy/MM/dd"  title="#{bundle.DateToLabel_validTo}" 
+                                                        showOn="focus"  onchange=" clearGrid() "  >
+                                                  <p:ajax immediate="false"  event="dateSelect" process="@this" update="exceptionListItems,totalExceptionsOutput,topSeverityOutput" 
+                                                        oncomplete="  clearGrid() "   />
+                                            </p:calendar>
+                                            
+                                        </th>
+                                        <th class="blackBackGreenBorderLeft"  >
+                                            <h:form>
+                                                <h:button onclick=" clearGrid() " class="button logout"  value="Reload" />
+                                            </h:form>
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </th>
+                        
+                    </tr>
+
+                    <!-- Main Totals getTopSeverityCall -->    
+                    <tr class="blackBackGreenBorderLeft" >
+                        <th class="blackBackNoBorderRight totalHeadingGreen totalHeadingGreenWidth " >
+                           <h3 class="totalHeadingGreen" >
+                                <b><h:outputText value="#{bundle.ViewTxnexceptionTotalExceptions}"/></b>
+                                <p:spacer width="20" height="10" />
+                           </h3>
+                        </th>
+                        <th class="blackBackNoBorderLeft totalHeadingWhite " >
+                            <h:outputText  id="totalExceptionsOutput" 
+                                           value="#{ExceptionReportController.totalExceptions}" 
+                                           title="#{bundle.ViewTxnexceptionTotalExceptions}" />
+                        </th>
+                        <th class="blackBackNoBorderRight totalHeadingGreen totalHeadingGreenWidth "  >
+                            <h3 class="totalHeadingGreen" >
+                                <b><h:outputText value="#{bundle.ViewTxnexceptionTopSeverities}"/></b>
+                                <p:spacer width="20" height="10" />
+                            </h3>
+                        </th>
+                        <th class="blackBackNoBorderLeft totalHeadingWhite " >
+                            <h:outputText  id="topSeverityOutput" 
+                                           value="#{ExceptionReportController.topSeverity}" 
+                                           title="#{bundle.ViewTxnexceptionTopSeverities}" />
+                            
+                        </th>
+                    </tr>
+                
+
+                </thead>
+                                                
+                <tbody class="blackBackGreenBorderLeft"  >
+                    <!-- Last 10 Exceptions - severity 1,2 red if less than 5 minutes old, else yellow, all other severity levels black -->
+                    <tr class="blackBackGreenBorderLeft" >
+                        <td class="blackBackNoBorderLeft totalHeadingWhite " colspan="4" >
+                      
+                            <p:dataTable id="exceptionListItems"  value="#{ExceptionReportController.items}"  var="item" widgetVar="exceptionListItems"
+                                   paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom" 
+                                   paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {CurrentPageReport}"
+                                   currentPageReportTemplate="Showing {startRecord} - {endRecord} out of {totalRecords}"
+                                   rowsPerPageTemplate="5,10,15,17,18,19,20,25,30,35,40"
+                                   pageLinks="15"  
+                                   scrollable="false"
+                                   rows="#{ExceptionReportController.showRows}" emptyMessage="No Exception Found" resizableColumns="false" liveResize="false"
+                                   rowStyleClass="   "  
+                                   sortMode="multiple" >
+                                
+                                <p:column style="width:25px">
+                                    <p:rowToggler />
+                                </p:column>
+
+                                
+                                 <p:column  filterBy="#{item.doneWhen}"  filterStyle=" " filterFunction="#{ExceptionReportController.filterByDate}" styleClass="columnClassMain"
+                                            style="  width:150px;   " sortBy="#{item.doneWhen}" >
+                                    <f:facet name="header"  >
+                                        <h:outputText value="#{bundle.ViewTxnexceptionTitle_donewhen}"  />
+                                    </f:facet>
+
+                                    <f:facet name="filter">
+                                        <p:calendar  pattern="yyyy-MM-dd">
+                                            <p:ajax event="dateSelect"  
+                                                    oncomplete="PF('exceptionListItems').filter()" />
+                                        </p:calendar>
+                                    </f:facet>                                     
+                                     
+                                     <h:outputText value="#{item.doneWhen}" styleClass=" columnClass  "  />
+                                 </p:column>
+
+                                 <p:column    filterBy="#{item.reportExceptionCategory}"  
+                                              filterStyle=" width:180px; " filterMatchMode="in"  styleClass=" columnClassMain  " 
+                                              style="  width:180px;   "  sortBy="#{item.reportExceptionCategory}" >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ViewTxnexceptionLabel_category}"/>
+                                    </f:facet>
+                                     
+                                       <f:facet name="filter"  >
+                                        <p:selectCheckboxMenu label="Categories" panelStyle="width:175px" scrollHeight="120" 
+                                                              onchange=" PF('exceptionListItems').filter() " panelStyleClass="without-selectall"
+                                                              widgetVar="categorySelectVar" filter="false" >
+                                            <f:selectItem itemLabel="Application"    itemValue="Application" />
+                                            <f:selectItem itemLabel="Formatting"     itemValue="Formatting" />
+                                            <f:selectItem itemLabel="Business Rules" itemValue="Business Rules" />
+                                            <f:selectItem itemLabel="System Down"    itemValue="System Down" />
+                                        </p:selectCheckboxMenu>
+                                    </f:facet>                   
+                                     
+                                     <h:outputText value="#{item.reportExceptionCategory}" styleClass=" columnClass  " />
+                                </p:column>
+                                
+                                 <p:column    filterBy="#{item.reportExceptionDescription}"  filterStyle=" width:600px; " filterMatchMode="contains"  styleClass=" columnClassMain  " 
+                                             style="    " sortBy="#{item.reportExceptionDescription}" >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ViewTxnexceptionTitle_description}"/>
+                                    </f:facet>
+                                     <h:outputText value="#{item.reportExceptionDescription}" styleClass=" columnClass  " />
+                                </p:column>
+                                
+                                <p:column filterBy="#{item.severity}"  filterStyle=" " filterMatchMode="in" styleClass=" columnClassMain  "  
+                                           style="  width:170px;   " sortBy="#{item.severityNumeric}" >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ViewTxnexceptionTitle_severity}"/>
+                                    </f:facet>
+                                    
+                                    <f:facet name="filter"  >
+                                        <p:selectCheckboxMenu label="Severities"   panelStyle="width:165px" scrollHeight="300" 
+                                                              onchange=" PF('exceptionListItems').filter() " 
+                                                              widgetVar="SeveritiesSelectVar" filter="false" panelStyleClass="without-selectall" >
+                                            <f:selectItem itemLabel="Severity 1" itemValue="1" />
+                                            <f:selectItem itemLabel="Severity 2" itemValue="2" />
+                                            <f:selectItem itemLabel="Severity 3" itemValue="3" />
+                                            <f:selectItem itemLabel="Severity 4" itemValue="4" />
+                                            <f:selectItem itemLabel="Severity 5" itemValue="5" />
+                                            <f:selectItem itemLabel="Severity 6" itemValue="6" />
+                                            <f:selectItem itemLabel="Severity 7" itemValue="7" />
+                                            <f:selectItem itemLabel="Severity 8" itemValue="8" />
+                                            <f:selectItem itemLabel="Severity 9" itemValue="9" />
+                                            <f:selectItem itemLabel="Severity 10" itemValue="10" />
+                                        </p:selectCheckboxMenu>
+                                    </f:facet>                   
+                                          
+                                    
+                                    <h:outputText value="#{item.severity}" style="text-align:right; float:right; "    />
+                                </p:column>
+
+                                <p:column   filterStyle="" styleClass=" columnClassMain  " 
+                                            style="  width:180px;   "
+                                            filterMatchMode="contains" 
+                                            filterBy="#{item.reportExceptionMerchant}"                                             
+                                            sortBy="#{item.reportExceptionMerchant}" >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ViewTxnexceptionTitle_merchantid}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.reportExceptionMerchant}"  styleClass=" columnClass  "  />
+                                </p:column>
+
+                                <p:rowExpansion styleClass="blackBackGreenBorderLeft"  >
+                                    <p:panelGrid     columns="2" columnClasses="expandGridLabel,blackBackGreenBorderLeft columnClassMain" 
+                                                                 style="width:800px" >
+                                        <h:outputText value="#{bundle.CreateTxnexceptionLabel_txnexceptionid}" styleClass="expandGridLabel"  />
+                                        <h:outputText value="#{item.reportExceptionTxnExId}"    />
+
+                                        <h:outputText value="#{bundle.CreateTxnexceptionLabel_donewhen}" styleClass="expandGridLabel"   />
+                                        <h:outputText value="#{item.doneWhen}"    />
+
+                                        <h:outputText value="#{bundle.CreateTxnexceptionLabel_description}"  styleClass="expandGridLabel"    />
+                                        <h:outputText value="#{item.reportExceptionDescription}"     />
+
+                                        <h:outputText value="#{bundle.ViewTxnexceptionLabel_category}"  styleClass="expandGridLabel"  />
+                                        <h:outputText value="#{item.reportExceptionCategory}"     />
+
+                                        <h:outputText value="#{bundle.ViewTxnexceptionLabel_severity}" styleClass="expandGridLabel"   />
+                                        <h:outputText value="#{item.severity}"   />
+
+                                        <h:outputText value="#{bundle.ViewTxnexceptionLabel_merchantid}"  styleClass="expandGridLabel"  />
+                                        <h:outputText value="#{item.reportExceptionMerchant}"     />
+
+                                        <h:outputText value="#{bundle.ViewTxnexceptionLabel_transactionuniqueidentifier}"  styleClass="expandGridLabel"     />
+                                        <h:outputText value="#{item.reportExceptionTUI}"   />
+
+                                        <h:outputText value="#{bundle.ViewTxnexceptionLabel_rrn}" styleClass="expandGridLabel"  />
+                                        <h:outputText value="#{item.reportExceptionRRN}"    />
+                                        
+                                        <h:outputText value="#{bundle.CreateTransactionentryLabel_transactionid}" styleClass="expandGridLabel"  />
+                                        <h:outputText value="#{item.transactionid}"    />
+                                        
+                                        <h:outputText value="#{bundle.CreateTransactionentryLabel_processingcode}" styleClass="expandGridLabel"  />
+                                        <h:outputText value="#{item.processingcode}"    />
+                                        
+                                        <h:outputText value="#{bundle.CreateTransactionentryLabel_transactionstate}" styleClass="expandGridLabel"  />
+                                        <h:outputText value="#{item.transactionstate}"    />
+                                        
+                                        <h:outputText value="#{bundle.CreateTransactionentryLabel_primaryaccountnumber}" styleClass="expandGridLabel"  />
+                                        <h:outputText value="#{item.primaryaccountnumber}"    />
+                                        
+                                        <h:outputText value="#{bundle.CreateTransactionentryLabel_transactionamount}" styleClass="expandGridLabel"  />
+                                        <h:outputText value="#{item.transactionamount}"    />
+                                        
+                                        <h:outputText value="#{bundle.CreateTransactionentryTitle_productid}" styleClass="expandGridLabel"  />
+                                        <h:outputText value="#{item.productid}"    />
+                                        
+                                    </p:panelGrid>
+                                </p:rowExpansion>
+                                
+                            </p:dataTable>
+                        </td>
+                    </tr>                    
+                    
+                 
+                </tbody>
+            </table>
+        </h:form>
+            
+    </div>
+        
+   
+</ui:define>
+    
+     
+</ui:composition>
+

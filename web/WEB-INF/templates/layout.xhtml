@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+$LastChangedBy: Stuart $
+$LastChangedDate: 2016-07-21 11:24:49 +0200 (Thu, 21 Jul 2016) $
+$LastChangedRevision: 1112 $
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>HALO Exception Reporting</title>
+
+        <!-- METADATA -->
+        <link rel="shortcut icon" type="image/png" href="/StellrExceptionReporting/resources/common/images/favicon.png"/>
+        
+        <meta charset="UTF-8"></meta>
+        <meta name="description" content="HALO Exception Reporting"></meta>
+        <meta name="keywords" content=""></meta>
+        <meta name="author" content=""></meta>
+
+        <!-- rGraph Includes rgraphpie -->
+        
+        <h:outputScript library="js/rGraph/libraries" name="RGraphcommoncore.js" />
+        <h:outputScript library="js/rGraph/libraries" name="RGraphcommondynamic.js" />
+        <h:outputScript library="js/rGraph/libraries" name="RGraphcommontooltips.js" />
+        <h:outputScript library="js/rGraph/libraries" name="RGraphcommonkey.js" />
+        <h:outputScript library="js/rGraph/libraries" name="RGraphpie.js" />
+        
+        <!--  CUSTOM CSS AND FOUNDATION CSS -->
+        
+        <h:outputStylesheet library="css" name="foundation.css" />
+        <h:outputStylesheet library="css" name="main.css" />
+
+        <!-- JAVASCRIPT DEPENDENCIES -->
+        <h:outputScript library="primefaces" name="jquery/jquery.js" />
+        <h:outputScript library="js" name="foundation.js" />
+
+        <!-- CUSTOM JAVASCRIPT -->
+        <h:outputScript library="js" name="custom.js" />
+        
+    </h:head>
+
+    <h:body>
+
+        <!-- GROWL MESSAGE -->
+        <p:growl id="growl" life="4000" autoUpdate="true"/>
+
+        <!-- WRAPPER -->
+        <div id="wrapper">
+
+            <!-- HEADER AND NAV -->
+            <div id="header" class="row">
+                    <ui:insert name="header">
+                        <ui:include src="/WEB-INF/templates/header.xhtml"></ui:include>
+                    </ui:insert>
+            </div>
+
+            <!-- CONTENT -->
+            <div id="content" class="row" style="background-color:#000;" >
+                <div class="title-bar titleBar" style="background-color:#000;" >
+                    <ui:insert name="titlebar">
+                        <ui:include src="/WEB-INF/templates/titlebar.xhtml"></ui:include>
+                    </ui:insert>
+                </div>
+                <div class="small-12 column mainContent" style="background-color:#000;" >
+                    <ui:insert name="content">
+                        <ui:include src="/WEB-INF/templates/content.xhtml"></ui:include>
+                    </ui:insert>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div id="footer" class="row">
+                <ui:insert name="footer">
+                    <ui:include src="/WEB-INF/templates/footer.xhtml"></ui:include>
+                </ui:insert>
+            </div>
+
+        </div>
+    </h:body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+$LastChangedBy: Andre $
+$LastChangedDate: 2016-07-07 09:50:33 +0200 (Thu, 07 Jul 2016) $
+$LastChangedRevision: 994 $
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>HALO Exception Reporting Login</title>
+
+        <!-- METADATA -->
+        <link rel="shortcut icon" type="image/png" href="/StellrExceptionReporting/resources/common/images/favicon.png"/>
+        <meta charset="UTF-8"></meta>
+        <meta name="description" content="HALO Exception Reportinge"></meta>
+        <meta name="keywords" content=""></meta>
+        <meta name="author" content=""></meta>
+
+        <!--  CUSTOM CSS AND FOUNDATION CSS -->
+        <h:outputStylesheet library="css" name="foundation.css" />
+        <h:outputStylesheet library="css" name="main.css" />
+
+        <!-- JAVASCRIPT DEPENDENCIES -->
+        <h:outputScript library="js" name="foundation.js" />
+
+        <!-- CUSTOM JAVASCRIPT -->
+        <h:outputScript library="js" name="custom.js" />
+
+    </h:head>
+
+    <h:body>
+        <div id="starContainer"></div>
+        <!-- GROWL MESSAGE -->
+        <p:growl id="growl" sticky="true" />
+
+        <!-- WRAPPER -->
+        <div id="wrapper">
+
+            <!-- HEADER AND NAV -->
+            <div id="header" class="row">
+                <div class="top-bar" role="navigation" style="background:none;">
+                    <div class="top-bar-left logo" style="cursor:pointer;" onclick="location.href = '/StellrExceptionReporting/';">
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div id="content" class="row">
+                <div class="title-bar titleBar" style="background:none; padding-top:4%;">
+                    <h3 style="color:#035583">HALO Exception Reporting Login</h3>
+                </div>
+                <div class="small-12 column mainContent">
+                    <div class="logon">
+                        <form action="j_security_check" method="POST">
+                            <h:panelGroup>
+                                <br/>
+                                <h:outputLabel for="username" value="Username" />
+                                <input id="username" required="true" type="text" name="j_username"  />
+
+                                <h:outputLabel for="password" value="Password" />
+                                <input id="password" value="" size="20"  type="password" name="j_password" />
+                                <br/>
+                                <input type="submit" class="button" value="Engage" id="login" />
+                            </h:panelGroup>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div id="footer" class="row">
+            </div>
+
+        </div>
+        <!-- Got it from https://github.com/dwmkerr/starfield -->
+        <script src="resources/js/starfield.js"></script>
+        <script>
+                        var container = document.getElementById('starContainer');
+                        var starfield = new Starfield('#FFFFCC');
+                        starfield.initialise(container);
+                        starfield.start();
+
+                        function randomise() {
+                            starfield.stop();
+                            starfield.stars = Math.random() * 1000 + 50;
+                            starfield.minVelocity = Math.random() * 30 + 5;
+                            starfield.maxVelocity = Math.random() * 50 + starfield.minVelocity;
+                            starfield.start();
+                        }
+        </script>
+    </h:body>
+</html>

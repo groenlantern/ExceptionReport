@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HALO Exception Reporting Login</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="icon" href="resources/common/icon/Stellr_icon.ico" />
+        <style>
+            #container {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                z-index: -1;
+            }
+            body{
+                background-color: #000000;
+                margin: 0; 
+                color: white !important;
+                font-family: 'Verdana', 'Helvetica', 'Arial', 'sans-serif' !important; 
+                padding-top: 20%;
+            }
+            h1 {
+                text-align: center; 
+                color: red;
+            }
+            p {
+                text-align: center; color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <h1>Login Error </h1>
+        <p>
+            Username and / or password incorrect
+        </p>
+        <!-- Got it from https://github.com/dwmkerr/starfield -->
+        <script src="resources/js/starfield.js"></script>
+        <script>
+            var container = document.getElementById('container');
+            var starfield = new Starfield('#ff0000');
+            starfield.initialise(container);
+            starfield.start();
+
+            function randomise() {
+                starfield.stop();
+                starfield.stars = Math.random() * 1000 + 50;
+                starfield.minVelocity = Math.random() * 30 + 5;
+                starfield.maxVelocity = Math.random() * 50 + starfield.minVelocity;
+                starfield.start();
+            }
+        </script>
+    </body>
+</html>

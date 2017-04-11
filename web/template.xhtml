@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+$LastChangedBy: Andre $
+$LastChangedDate: 2016-07-07 09:50:33 +0200 (Thu, 07 Jul 2016) $
+$LastChangedRevision: 994 $
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <!--<title><ui:insert name="title">Default Title</ui:insert></title>-->
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+        <h:outputStylesheet library="common" name="./css/default.css"/>
+        <title>HALO Exception Reporting: Halo170 - <ui:insert name="title">Default Title</ui:insert></title>
+        <link rel="icon" href="${pageContext.request.contextPath}../../resources/common/icon/Stellr_icon.ico" />
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl" sticky="true" />
+
+        <p:layout fullPage="true">
+
+            <p:layoutUnit position="north" size="65" >
+                <!-- header  -->
+                <div id="top">
+                    <div id="starscontainer"></div>  
+                    <table width="100%" >
+                        <tr>
+                            <td>
+                                <h:outputLink id="backTo" value="../../main.xhtml">                            
+                                    <h:graphicImage value="${pageContext.request.contextPath}../../resources/common/images/stellr logo1_compressed.png" 
+                                                    styleClass="topTitle" />
+                                </h:outputLink>
+                            </td>
+                            <td class="topUserName">
+                                <h:graphicImage value="${pageContext.request.contextPath}../../resources/common/images/user-identity.png" 
+                                                styleClass="topUserName" />
+                                <p:outputLabel styleClass="topUserName" 
+                                               value="#{audit_Log_Login.user_logged_in}"/>
+                            </td>
+                        </tr>
+                    </table>                     
+                </div>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="30">
+                <div style="width: 100%; text-align: center; font-size: small;">
+                    Copyright Â© 2015:  All rights reserved by Stellr-net.com
+                </div>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+
+        </p:layout>
+        <h:outputScript library="js" name="starfieldfortop.js" />
+
+    </h:body>
+</html>

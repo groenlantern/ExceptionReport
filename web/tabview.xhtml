@@ -1,0 +1,85 @@
+
+<!--
+$LastChangedBy: Andre $
+$LastChangedDate: 2016-07-07 09:50:33 +0200 (Thu, 07 Jul 2016) $
+$LastChangedRevision: 994 $
+--><ui:composition template="/WEB-INF/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="titlebar">
+        <h3>Stellr Test Bench</h3>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="form">    
+                <p:growl id="msgs" sticky="true" showDetail="true" />   
+                <p:panel>
+                    <p:panelGrid columns="10" >
+                        <h:outputText value="Host Name: " />
+                        <p:inputText id="host" value="#{txnRequest.host}" />
+
+                        <h:outputText value="SAPI Port Number: " />
+                        <p:inputText id="port" value="#{txnRequest.sapiPort}" />
+
+                        <h:outputText value="Protocol: " />
+                        <p:selectOneMenu id="protocol" value="#{txnRequest.protocol}" style="vertical-align: middle" required="true">
+                            <f:selectItem itemLabel="HTTP" itemValue="http"/>
+                            <f:selectItem itemLabel="HTTPS" itemValue="https"/>
+                        </p:selectOneMenu>
+
+                        <h:outputText value="DPA: " />
+                        <p:selectOneMenu id="dpa" value="#{txnRequest.selectedDPA}" style="vertical-align: middle" required="true">
+                            <f:selectItem itemLabel="[Select DPA]" itemValue="" />
+                            <f:selectItem itemLabel="SAPI" itemValue="sapi"/>
+                            <f:selectItem itemLabel="SAPISOAP" itemValue="soap"/>
+                        </p:selectOneMenu>
+
+                        <h:outputText value="Merchant Id: " />
+                        <p:selectOneMenu id="merchantid" 
+                                         value="#{txnRequest.merchantid}" 
+                                         style="vertical-align: middle" 
+                                         required="true"
+                                         requiredMessage="Please select a Merchant ID"
+                                         valueChangeListener="#{txnRequest.merchantListener}">     
+                            <f:selectItem itemLabel="[Select one]" 
+                                          noSelectionOption="true"
+                                          itemDisabled="false" />
+                            <f:selectItems var="merchantid" 
+                                           value="#{txnRequest.merchantlist}" 
+                                           itemLabel="#{merchantid}" 
+                                           itemValue="#{merchantid}"/>
+                            <f:ajax event="valueChange" 
+                                    execute="@all" 
+                                    render=":form:tabbedView:pid1 :form:tabbedView:bhndigproductid :form:tabbedView:requestorid :form:tabbedView:pid2 :form:tabbedView:fintproductid"/> 
+                        </p:selectOneMenu>
+
+                    </p:panelGrid>
+                </p:panel>            
+                <p:tabView id="tabbedView" activeIndex="#{tabViewManagedBean.index}">          
+                    <p:tab id="transactiotab" title="Transaction">
+                        <ui:include src="transaction/transaction.xhtml" />
+                    </p:tab>
+                    <p:tab title="Catalogue Utils">
+                        <ui:include src="catalogue/config.xhtml" />
+                    </p:tab>
+                    <p:tab title="Heart beat">
+                        <ui:include src="heartbeat/heartbeat.xhtml" />
+                    </p:tab>
+                    <p:tab title="BHN Digital">
+                        <ui:include src="bhndig/bhndigindex.xhtml" />
+                    </p:tab>
+                    <p:tab title="Batch Transaction">
+                        <ui:include src="batchtransaction/batchtransaction.xhtml" />
+                    </p:tab>
+                    <p:tab title="Multi Transaction - Financial">
+                        <ui:include src="multitransaction/multitransaction.xhtml" />
+                    </p:tab>
+                </p:tabView>
+            </h:form>
+    </ui:define>
+</ui:composition>
+

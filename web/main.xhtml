@@ -1,0 +1,198 @@
+
+<!--
+$LastChangedBy: Stuart $
+$LastChangedDate: 2016-10-21 13:42:33 +0200 (Fri, 21 Oct 2016) $
+$LastChangedRevision: 1580 $
+--><ui:composition template="/WEB-INF/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="titlebar">
+        <h3>Database Maintenance</h3>
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="boxWrapper">
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/address/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/office-address-book.png" /></div>
+                    <div class="small-12"><p>Address</p></div>
+                </div>
+            </div>
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/catalogue/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/view-catalog.png" /></div>
+                    <div class="small-12">
+                        <p>Catalogue</p>
+                    </div>
+                </div>
+            </div>
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/contentpartner/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/resource-group.png" /></div>
+                    <div class="small-12">
+                        <p>Content Partner</p>
+                    </div>
+                </div>
+            </div>
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/contentpartneraddress/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/content-partner-address.png" /></div>
+                    <div class="small-12">
+                        <p>Content Partner Address</p>
+                    </div>
+                </div>
+            </div>
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/contentaggregator/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/nepomuk.png" /></div>
+                    <div class="small-12">
+                        <p>Content Aggregator</p>
+                    </div>
+                </div>
+            </div>
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/contentaggregatoraddress/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/content-partner-aggr-address.png" /></div>
+                    <div class="small-12">
+                        <p>Content Agg. Address</p>
+                    </div>
+                </div>
+            </div>
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/contentdistributionlink/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/content-distribution-link.png" /></div>
+                    <div class="small-12">
+                        <p>Content Distribution Link</p>
+                    </div>
+                </div>
+            </div>
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/currencycode/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/help-donate.png" /></div>
+                    <div class="small-12">
+                        <p>Currency Code</p>
+                    </div>
+                </div>
+            </div>
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/distributionpartner/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/view-loan.png" /></div>
+                    <div class="small-12">
+                        <p>Distribution Partner</p>
+                    </div>
+                </div>
+            </div>
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/distributionpartneraddress/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/distribution-address.png" /></div>
+                    <div class="small-12">
+                        <p>DP Address</p>
+                    </div>
+                </div>
+            </div>
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/distributionpartneraggregator/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/distribution-aggr.png" /></div>
+                    <div class="small-12">
+                        <p>DP Aggregator</p>
+                    </div>
+                </div>
+            </div>
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/distributionpartneraggregatoraddress/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/distribution-aggr-address.png" /></div>
+                    <div class="small-12">
+                        <p>DP Aggregator Address</p>
+                    </div>
+                </div>
+            </div>
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/merchantcategory/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/merchant-categories.png" /></div>
+                    <div class="small-12">
+                        <p>Merchant Category</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/product/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/view-credit-card-account.png" /></div>
+                    <div class="small-12">
+                        <p>Product</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/productdprule/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/product-catalogue-link.png" /></div>
+                    <div class="small-12">
+                        <p>Product DP Rules</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/productcataloguelink/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/product-catalogue-link.png" /></div>
+                    <div class="small-12">
+                        <p>Product Category Link</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/productparameter/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/productparameter.png" /></div>
+                    <div class="small-12">
+                        <p>Product Parameter</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/properties/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/properties.png" /></div>
+                    <div class="small-12">
+                        <p>Properties</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/store/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/view-bank.png" /></div>
+                    <div class="small-12">
+                        <p>Store</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/storetype/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/store-type.png" /></div>
+                    <div class="small-12">
+                        <p>Store Type</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="small-12 medium-4  column" onclick="location.href = '${request.contextPath}/crudsJSF/translationfield/List.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/system-switch-user.png" /></div>
+                    <div class="small-12">
+                        <p>Translation Field</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="small-12 medium-4  column end" onclick="location.href = '${request.contextPath}/crudsJSF/ProductOnboarding/productOnboardingWizard.xhtml';">
+                <div class="dashBox">
+                    <div class="small-12"><img src="${request.contextPath}/resources/common/images/tools-wizard.png" /></div>
+                    <div class="small-12">
+                        <p>Product On-boarding</p>
+                    </div>
+                </div>
+            </div> 
+
+
+        </div>
+    </ui:define>
+</ui:composition>
+
+

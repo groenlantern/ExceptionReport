@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+$LastChangedBy: Andre $
+$LastChangedDate: 2016-07-07 09:50:33 +0200 (Thu, 07 Jul 2016) $
+$LastChangedRevision: 994 $
+-->
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://128.199.168.147:8085/SAPISOAP/SAPI?wsdl" uri="wsdl/128.199.168.147_8085/SAPISOAP/SAPI.wsdl"/>
+    <system systemId="http://128.199.168.147:8085/SAPISOAP/SAPI?xsd=1" uri="wsdl/128.199.168.147_8085/SAPISOAP/SAPI.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/SAPISOAP/SAPI?wsdl" uri="wsdl/localhost_8080/SAPISOAP/SAPI.wsdl"/>
+    <system systemId="http://localhost:8080/SAPISOAP/SAPI?xsd=1" uri="wsdl/localhost_8080/SAPISOAP/SAPI.xsd_1.xsd"/>
+    <system systemId="http://dev2:8082/SAPISOAP/SAPI?wsdl" uri="wsdl/dev2_8082/SAPISOAP/SAPI.wsdl"/>
+    <system systemId="http://dev2:8082/SAPISOAP/SAPI?xsd=1" uri="wsdl/dev2_8082/SAPISOAP/SAPI.xsd_1.xsd"/>
+    <system systemId="http://dev2:8080/SAPISOAP/SAPI?wsdl" uri="wsdl/dev2_8080/SAPISOAP/SAPI.wsdl"/>
+    <system systemId="http://dev2:8080/SAPISOAP/SAPI?xsd=1" uri="wsdl/dev2_8080/SAPISOAP/SAPI.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/FlowcoreBHNDPA/Flowcore?wsdl" uri="wsdl/localhost_8080/FlowcoreBHNDPA/Flowcore.wsdl"/>
+    <system systemId="http://localhost:8080/FlowcoreBHNDPA/Flowcore?xsd=1" uri="wsdl/localhost_8080/FlowcoreBHNDPA/Flowcore.xsd_1.xsd"/>
+    <system systemId="https://localhost:8080/SAPISOAP/SAPI?wsdl" uri="wsdl/localhost_8080/SAPISOAP/SAPI.wsdl"/>
+    <system systemId="https://localhost:8080/SAPISOAP/SAPI?xsd=1" uri="wsdl/localhost_8080/SAPISOAP/SAPI.xsd_1.xsd"/>
+    <system systemId="https://localhost:8080/FlowcoreBHNDPA/Flowcore?wsdl" uri="wsdl/localhost_8080/FlowcoreBHNDPA/Flowcore.wsdl"/>
+    <system systemId="https://localhost:8080/FlowcoreBHNDPA/Flowcore?xsd=1" uri="wsdl/localhost_8080/FlowcoreBHNDPA/Flowcore.xsd_1.xsd"/>
+</catalog>
